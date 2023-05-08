@@ -1,0 +1,38 @@
+# Kafka configs taken from: https://github.com/confluentinc/cp-all-in-one/blob/7.3.0-post/cp-all-in-one-community/docker-compose.yml
+version: "3"
+
+services:
+  postgres:
+    image: "postgres:alpine"
+    hostname: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "pass"
+      POSTGRES_DB: "CheckingOutEFCoreInheritanceOptions"
+  
+  mysql:
+    image: "mysql:8.0"
+    hostname: mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+      MYSQL_ROOT_PASSWORD: "pass"
+      MYSQL_DATABASE: "CheckingOutEFCoreInheritanceOptions"
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    # image: mcr.microsoft.com/azure-sql-edge:1.0.7 # full SQL Server doesn't seem to work on M1
+    hostname: sqlserver
+    container_name: sqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: StupidPassw0rd
+      MSSQL_PID: Developer
